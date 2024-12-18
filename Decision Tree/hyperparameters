@@ -1,0 +1,58 @@
+ere’s an explanation of key hyperparameters for decision trees:
+
+1. ccp_alpha (Cost-Complexity Pruning Alpha)
+Controls post-pruning of the tree.
+Higher values prune more branches, simplifying the tree but risking underfitting.
+Lower values keep more branches, risking overfitting.
+Default: 0.0 (no pruning).
+  
+2. max_leaf_nodes
+Limits the maximum number of leaf nodes in the tree.
+A smaller value results in a simpler tree, reducing overfitting.
+Default: None (no limit).
+
+3. criterion
+Determines the function to measure the quality of splits:
+"gini": (Default) Measures Gini impurity (for classification).
+"entropy": Measures information gain (for classification).
+"squared_error": Measures variance reduction (for regression).
+"absolute_error": Measures mean absolute error (for regression).
+
+4. max_depth
+Sets the maximum depth of the tree.
+Prevents the tree from growing too deep, controlling overfitting.
+Default: None (tree grows until all leaves are pure or minimum samples split).
+
+5. min_samples_split
+The minimum number of samples required to split an internal node.
+Higher values reduce splits, creating a simpler tree and reducing overfitting.
+Default: 2.
+
+6. min_samples_leaf
+The minimum number of samples required in a leaf node.
+Higher values prevent smaller splits, making the tree simpler.
+Default: 1.
+  
+7. min_impurity_decrease
+A node will split only if the impurity decrease is greater than or equal to this threshold.
+Controls the minimum impurity reduction needed for a split.
+Default: 0.0.
+  
+8. max_features
+The number of features to consider when looking for the best split:
+None: Use all features.
+Integer: Use the specified number of features.
+"sqrt": Use the square root of the total features.
+"log2": Use the logarithm (base 2) of the total features.
+Default: None.
+  
+9. splitter
+Controls how the splits are chosen:
+"best": Chooses the best split based on the criterion.
+"random": Chooses random splits (useful for randomized trees).
+Default: "best".
+  
+Summary
+Key Parameters for Controlling Overfitting: ccp_alpha, max_depth, min_samples_split, min_samples_leaf.
+Key Parameters for Quality of Splits: criterion, splitter.
+These hyperparameters allow for fine-tuning the decision tree based on dataset characteristics and requirements.
