@@ -1,0 +1,69 @@
+Support Vector Machine (SVM) is a powerful supervised learning algorithm used for classification and regression tasks. Here’s an overview of SVM hyperparameters and their roles:
+
+Key SVM Hyperparameters
+C (Regularization Parameter)
+
+Controls the trade-off between achieving a low error on training data and minimizing model complexity.
+Small C: Larger margin, allows more misclassifications (simpler model, avoids overfitting).
+Large C: Smaller margin, tries to classify all points correctly (can overfit).
+python
+Copy code
+from sklearn.svm import SVC
+model = SVC(C=1.0)  # Default C
+kernel
+
+Determines the function used to map input features to a higher-dimensional space.
+Common options:
+linear: For linear separable data.
+rbf (Radial Basis Function): Default, for non-linear data.
+poly: Polynomial kernel.
+sigmoid: For similarity-based tasks.
+python
+Copy code
+model = SVC(kernel='rbf')  # Default kernel
+degree (Only for poly kernel)
+
+Specifies the degree of the polynomial kernel.
+Higher values allow more complex decision boundaries.
+python
+Copy code
+model = SVC(kernel='poly', degree=3)  # Default degree
+gamma (Kernel Coefficient for rbf, poly, sigmoid)
+
+Determines how far the influence of a single data point reaches:
+Small gamma: More generalized model (wide influence).
+Large gamma: More focused model (narrow influence, risk of overfitting).
+python
+Copy code
+model = SVC(kernel='rbf', gamma='scale')  # Default: 'scale'
+coef0 (Only for poly and sigmoid kernels)
+
+Controls the influence of higher-order terms in the kernel function.
+python
+Copy code
+model = SVC(kernel='poly', coef0=0.0)  # Default value
+class_weight
+
+Handles class imbalance by assigning weights to classes.
+Set to "balanced" to automatically adjust weights based on class frequencies.
+python
+Copy code
+model = SVC(class_weight='balanced')
+probability
+
+Enables probability estimates using cross-validation.
+This is computationally expensive.
+python
+Copy code
+model = SVC(probability=True)
+tol (Tolerance)
+
+Specifies the stopping criterion for optimization.
+Smaller values lead to more precise solutions but take longer.
+python
+Copy code
+model = SVC(tol=1e-3)  # Default: 0.001
+Tuning SVM Hyperparameters
+Use GridSearchCV or RandomizedSearchCV to find optimal values for C, kernel, gamma, etc.
+Scale the data using StandardScaler or MinMaxScaler to improve SVM performance.
+Experiment with different kernels for non-linear data.
